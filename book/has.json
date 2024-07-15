@@ -1,12 +1,9 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/index.html" },
-      { "source": "/edit", "destination": "/edit.html" },
-      { "source": "/library", "destination": "/library.html" }
-    ],
-    "builds": [
-      { "src": "index.html", "use": "@vercel/static" },
-      { "src": "edit.html", "use": "@vercel/static" },
-      { "src": "library.html", "use": "@vercel/static" }
-    ]
-}  
+  "version": 2,
+  "public": true,
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/edit", "dest": "/edit.html" },
+    { "src": "/library", "dest": "/library.html" }
+  ]
+}

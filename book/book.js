@@ -94,3 +94,17 @@ function handleAddBook() {
     // Optionally, redirect to library.html after adding a book
     window.location.href = 'library.html';
 }
+
+// Function to handle deleting a book from library.html
+function handleDeleteBook(index) {
+    const confirmDelete = confirm("Are you sure you want to delete this book?");
+    if (confirmDelete) {
+        deleteBook(index);
+        displayBooksOnLibrary(); // Refresh the book list
+    }
+}
+
+// Function to handle editing a book from library.html
+function handleEditBook(index) {
+    window.location.href = `edit.html?index=${index}`; // Redirect to edit page with book index
+}
