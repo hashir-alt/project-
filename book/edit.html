@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Book</h1>
+        <div class="form-container">
+            <input type="hidden" id="edit-index"> <!-- Hidden field to store editIndex -->
+            <input type="text" id="edit-author-name" placeholder="Author Name">
+            <input type="text" id="edit-book-name" placeholder="Book Name">
+            <textarea id="edit-book-description" placeholder="Description"></textarea>
+            <button onclick="handleSaveChanges()">Save Changes</button>
+        </div>
+    </div>
+    <script src="book.js"></script>
+    <script>
+        // Load book details for editing
+        const urlParams = new URLSearchParams(window.location.search);
+        const editIndex = urlParams.get('index');
+        if (editIndex !== null) {
+            loadBookDetails(editIndex);
+        }
+    </script>
+</body>
+</html>

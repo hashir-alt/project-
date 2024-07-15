@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Books Library</h1>
+        <table id="books-table">
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="books-list">
+                <!-- ya books add hoge -->
+            </tbody>
+        </table>
+    </div>
+    <script src="book.js"></script>
+    <script>
+        // Function to dynamically generate table rows for each book
+        function generateBooksTable() {
+            const books = loadBooksFromLocalStorage();
+            const booksList = document.getElementById('books-list');
+            booksList.innerHTML = '';
+
+            books.forEach((book, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${book.name}</td>
+                    <td>${book.author}</td>
+                    <td>${book.description}</td>
+                    <td class="actions">
+                        <button class="edit-btn" onclick="handleEditBook(${index})">Edit</button>
+                        <button class="delete-btn" onclick="handleDeleteBook(${index})">Delete</button>
+                    </td>
+                `;
+                booksList.appendChild(row);
+            });
+        }
+
+        // Function to handle editing a book
+        function handleEditBook(index) {
+            window.location.href = `edit.html?index=${index}`;
+        }
+
+        // Function to handle deleting a book
+        function handleDeleteBook(index) {
+            if (confirm('Are you sure you want to delete this book?')) {
+                deleteBook(index);
+                generateBooksTable();
+            }
+        }
+
+        // Initialize: Display books when library.html loads
+        document.addEventListener('DOMContentLoaded', generateBooksTable);
+    </script>
+</body>
+</html>
